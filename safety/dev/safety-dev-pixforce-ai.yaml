@@ -1,0 +1,19 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: safety-dev-pixforce-ai
+  namespace: argocd
+spec:
+  description: Projeto DEV – Pixforce AI
+
+  sourceRepos:
+    - https://github.com/pixforce-dev/*
+
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: '*'
+
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'

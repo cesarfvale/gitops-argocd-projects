@@ -1,0 +1,19 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: safety-qa-pixforce-ai
+  namespace: argocd
+spec:
+  description: Projeto QAs – Pixforce AI
+
+  sourceRepos:
+    - https://github.com/pixforce-dev/*
+
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: '*'
+
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
